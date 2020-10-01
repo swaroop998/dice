@@ -21,7 +21,8 @@ var diceDom = document.querySelector(".dice");
 diceDom.style.display = "none";
 
 //Шоог шидэх эвент листэнэр
-document.querySelector(".btn-roll").addEventListener("click", function () {
+document.querySelector(".btn-roll").addEventListener("click", function () 
+{
   //1-6 доторх санамсаргүй тоог  гаргаж авна
   var diceNumber = Math.floor(Math.random() * 6) + 1;
   diceDom.style.display = "block";
