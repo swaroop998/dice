@@ -48,7 +48,7 @@ document.querySelector(".btn-hold").addEventListener("click", function () {
   document.getElementById("score-" + activePlayer).textContent =
     score[activePlayer];
 
-  if (score[activePlayer] > 11) {
+  if (score[activePlayer] > 100) {
     document.getElementById("name-" + activePlayer).textContent = "WINNER!!!!!";
     document
       .querySelector(".player-" + activePlayer + "-panel")
