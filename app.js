@@ -1,6 +1,6 @@
 //Тоглогчийн ээлжийг хадгалах хувьсагч
 //Нэгдүгээр тоглогч 0 хоёрдугаар тоглгч 1
-var activePlayer = 1;
+var activePlayer = 0;
 
 //Тоглогчийн цуглуулсан оноог хадгалах хувьсагч
 var score = [0, 0];
@@ -18,10 +18,31 @@ document.querySelector("#current-0").textContent = "0";
 document.querySelector("#current-1").textContent = "0";
 
 var diceDom = document.querySelector(".dice");
-window.document.querySelector(".dice").style.display = "none";
+diceDom.style.display = "none";
 
+//Шоог шидэх эвент листэнэр
 document.querySelector(".btn-roll").addEventListener("click", function () {
-  var dice = Math.floor(Math.random() * 6) + 1;
+  //1-6 доторх санамсаргүй тоог  гаргаж авна
+  var diceNumber = Math.floor(Math.random() * 6) + 1;
   diceDom.style.display = "block";
-  diceDom.src = "dice-" + dice + ".png";
+  //Зураг солих
+  diceDom.src = "dice-" + diceNumber + ".png";
+
+  //Тоглогчийн ээлжийн оноог өөрчлөх
+  if (diceNumber !== 1) {
+    roundScore += diceNumber;
+    document.getElementById("current-" + activePlayer).textContent = roundScore;
+  } else {
+    document.getElementById("current-" + activePlayer).textContent = "0";
+    roundScore = 0;
+
+    activePlayer === 0 ? (activePlayer = 1) : (activePlayer = 0);
+
+    document.querySelector(".player-0-panel").classList.toggle("active");
+    document.querySelector(".player-1-panel").classList.toggle("active");
+
+    diceDom.style.display = "none";
+  }
 });
+
+//
